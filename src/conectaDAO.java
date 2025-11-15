@@ -23,7 +23,7 @@ public class conectaDAO {
         try {
         
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/leiloes?user=root&password=316497&useSSL=false&allowPublicKeyRetrieval=true");
-            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso");
         } catch (SQLException erro){
             JOptionPane.showMessageDialog(null, "Erro ConectaDAO" + erro.getMessage());
         }
