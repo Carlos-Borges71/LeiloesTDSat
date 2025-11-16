@@ -1,4 +1,9 @@
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -8,13 +13,15 @@
  *
  * @author Adm
  */
-public class listagemProdutosVendidoVIEW1 extends javax.swing.JFrame {
+public class listagemProdutosVendidoVIEW extends javax.swing.JFrame {
 
     /**
      * Creates new form listagemVIEW
      */
-    public listagemProdutosVendidoVIEW1() {
+    public listagemProdutosVendidoVIEW() {
         initComponents();
+        listarProdutosVendidos();
+        
         
     }
 
@@ -141,28 +148,28 @@ public class listagemProdutosVendidoVIEW1 extends javax.swing.JFrame {
     private javax.swing.JTable listaProdutos;
     // End of variables declaration//GEN-END:variables
 
-//    private void listarProdutos() {
-//        try {
-//            ProdutosDAO produtosdao = new ProdutosDAO();
-//
-//            DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
-//            model.setNumRows(0);
-//
-//            ArrayList<ProdutosDTO> listagem = produtosdao.listarProdutos();
-//
-//            for (int i = 0; i < listagem.size(); i++) {
-//                model.addRow(new Object[]{
-//                    listagem.get(i).getId(),
-//                    listagem.get(i).getNome(),
-//                    listagem.get(i).getValor(),
-//                    listagem.get(i).getStatus()
-//
-//                });
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace(); // mostra o erro no console
-//            JOptionPane.showMessageDialog(null, "Erro ao listar produtos: " + e.getMessage());
-//        }
-//
-//    }
+    private void listarProdutosVendidos() {
+        try {
+            ProdutosDAO produtosdao = new ProdutosDAO();
+
+            DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
+            model.setNumRows(0);
+
+            ArrayList<ProdutosDTO> listagem = produtosdao.listarProdutosVendidos();
+
+            for (int i = 0; i < listagem.size(); i++) {
+                model.addRow(new Object[]{
+                    listagem.get(i).getId(),
+                    listagem.get(i).getNome(),
+                    listagem.get(i).getValor(),
+                    listagem.get(i).getStatus()
+
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // mostra o erro no console
+            JOptionPane.showMessageDialog(null, "Erro ao listar produtos: " + e.getMessage());
+        }
+
+    }
 }
