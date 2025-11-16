@@ -112,7 +112,7 @@ public class ProdutosDAO {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao buscar filme por Código!\n" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao buscar produto \n" + e.getMessage());
 
         }
         return listagem;
