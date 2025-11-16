@@ -46,30 +46,27 @@ public class ProdutosDAO {
     }
 
     public ArrayList<ProdutosDTO> listarProdutos() {
-        String sql = "SELECT * FROM produtos";
-
+       
+        return listagem;
+    }
+    
+    public void venderProduto(Integer id){
+        String sql = "UPDATE produtos SET status=? WHERE id=?";
         
+
         try {
             conn = new conectaDAO().connectDB();
             prep = conn.prepareStatement(sql);
 
-            resultset = prep.executeQuery();
+            prep.setString(1, "Vendido");            
+            prep.setInt(2, id);
+            prep.executeUpdate();
 
-            while (resultset.next()) {
-
-                ProdutosDTO p = new ProdutosDTO();
-                p.setId(resultset.getInt("id"));
-                p.setNome(resultset.getString("nome"));
-                p.setValor(resultset.getInt("valor"));
-                p.setStatus(resultset.getString("status"));
-                listagem.add(p);
-            }
+            JOptionPane.showMessageDialog(null, "Produto vendido com sucesso");
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao buscar filme por Código!\n" + e.getMessage());
-
-        }
-        return listagem;
+            JOptionPane.showMessageDialog(null, "Erro ao vender produto!\n" + e.getMessage());
+        } 
     }
 
 }
